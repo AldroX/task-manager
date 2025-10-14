@@ -16,7 +16,7 @@ export const routes: Routes = [
       },
       {
         path: 'tasks',
-        loadComponent: () => import('./feature-manager-task/task-management.page').then(c => c.TaskManagementPageComponent),
+        loadComponent: () => import('./features/Task_Manager/list-task/list-task.component').then(c => c.ListTaskComponent),
       },
     ],
   },
