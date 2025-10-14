@@ -1,0 +1,14 @@
+.list-task {
+  display: grid;
+  grid-template-columns: 300px 300px 300px 300px;
+  grid-template-rows: 1fr;
+  gap: 50px;
+  padding: 1rem;
+  margin-left: 50px;
+}
+.no-tasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
