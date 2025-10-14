@@ -4,6 +4,11 @@
   background-color: #f7f8fa;
   border-right: 1px solid rgba(0,0,0,0.12);
   transition: width 0.25s ease;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 64px; /* Posicionado debajo del header fijo */
+  z-index: 1000;
 }
 
 :host.collapsed {
