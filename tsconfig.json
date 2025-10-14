@@ -3,6 +3,16 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
+    "baseUrl":"./src",
+    "paths":{
+      "@core/services/*":["app/core/service/*"],
+      "@core/guards/*":["app/core/guards/*"],
+      "@core/models/*":["app/core/models/*"],
+      "@features/*":["app/features/*"],
+      "@store*":["app/store*"],
+      "@layout/*":["app/layout/*"],
+      "@shared/*":["app/shared/*"]
+    },
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
