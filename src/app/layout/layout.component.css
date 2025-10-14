@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: calc(100vh - 64px);
+}

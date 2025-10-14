@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  width: 240px;
+  background-color: #f7f8fa;
+  border-right: 1px solid rgba(0,0,0,0.12);
+  transition: width 0.25s ease;
+}
+
+:host.collapsed {
+  width: 72px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px 0 8px;
+}
+
+.sidebar-title {
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-nav-list {
+  padding-top: 8px;
+}
+
+a[mat-list-item] mat-icon[matListIcon] {
+  margin-right: 16px;
+}

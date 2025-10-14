@@ -1,0 +1,24 @@
+<div class="sidebar-header">
+  <button mat-icon-button (click)="toggleSidebar()" aria-label="Toggle sidebar">
+    <mat-icon>{{ isExpanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+  </button>
+  @if(isExpanded){
+  <span class="sidebar-title" *ngIf="isExpanded">Navegación</span>
+  }
+  <span class="spacer"></span>
+</div>
+
+<mat-nav-list>
+  <a mat-list-item [routerLink]="['/dashboard']">
+    <mat-icon matListIcon>dashboard</mat-icon>
+    @if(isExpanded){
+        <span matLine>Dashboard</span>
+    }
+  </a>
+  <a mat-list-item [routerLink]="['/tasks']">
+    <mat-icon matListIcon>checklist</mat-icon>
+    @if(isExpanded){
+        <span matLine>Gestión de tareas</span>
+    }
+  </a>
+</mat-nav-list>
