@@ -22,7 +22,8 @@ import { Tareas } from '@core/models/Tareas.models';
 import { ModalComponent } from '@shared/modal/modal.component';
 import { routes } from 'app/app.routes';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TaskService } from 'app/core';
+import { TaskService } from 'app/core/services/task.service';
+
 
 export interface TaskFormData {
   task?: Tareas;
