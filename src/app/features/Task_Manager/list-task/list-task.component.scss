@@ -30,6 +30,12 @@
   justify-content: space-between;
 }
 
+.form-search{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 @media (max-width: 1200px) {
   .list-task {
     grid-template-columns: 300px 300px;

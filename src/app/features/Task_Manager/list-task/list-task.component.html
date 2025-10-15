@@ -2,17 +2,38 @@
   <div class="create-search">
     <header class="select">
       <h4>Filtrar por estado</h4>
-      <mat-form-field>
-        <mat-label>Estados:</mat-label>
-        <mat-select
-          [(ngModel)]="estadoSeleccionado"
-          (ngModelChange)="onFilterTasksByStatus()"
-        >
-          <mat-option value="">----</mat-option>
-          <mat-option value="pendiente">Pendiente</mat-option>
-          <mat-option value="completado">Completado</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div class="form-search">
+        <mat-form-field>
+          <mat-label>Estados:</mat-label>
+          <mat-select [formControl]="estadoControl">
+            <mat-option value="">Todos</mat-option>
+            <mat-option value="pendiente">Pendiente</mat-option>
+            <mat-option value="completado">Completado</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Buscar tarea</mat-label>
+          <input
+            matInput
+            [formControl]="searchControl"
+            placeholder="Buscar por título o descripción..."
+          />
+          <mat-icon matPrefix>search</mat-icon>
+          @if (searchControl.value) {
+          <button
+            matSuffix
+            mat-icon-button
+            (click)="clearSearch()"
+            aria-label="Limpiar búsqueda"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          }
+        </mat-form-field>
+        <button mat-stroked-button (click)="clearFilters()" class="clear-btn">
+          Limpiar filtros
+        </button>
+      </div>
     </header>
     <button
       mat-mini-fab
@@ -24,7 +45,7 @@
     </button>
   </div>
   <div class="list-task">
-    @for(task of tasks; track task.id){
+    @for(task of filteredTasks; track task.id){
     <app-task-card
       [task]="task"
       (deleteTask)="onDeleteTask($event)"
