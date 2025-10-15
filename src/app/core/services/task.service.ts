@@ -24,7 +24,6 @@ export class TaskService {
 
   createTask(task: Omit<Tareas, 'id'>): Observable<Tareas> {
     const currentTasks = this.tasksSubject.value;
-    console.log('Tareas actuales antes de crear:', currentTasks.length);
     
     const newTask: Tareas = {
       ...task,
@@ -32,11 +31,7 @@ export class TaskService {
     };
     
     const updatedTasks = [...currentTasks, newTask];
-    console.log('Tareas después de crear:', updatedTasks.length);
-    console.log('Nueva tarea creada:', newTask);
-    
     this.tasksSubject.next(updatedTasks);
-    console.log('BehaviorSubject actualizado');
     
     return of(newTask);
   }
