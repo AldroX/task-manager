@@ -1,0 +1,58 @@
+<section class="container">
+  <div class="form">
+    <h2 mat-dialog-title>
+      {{ isEditMode ? "Editar Tarea" : "Crear Nueva Tarea" }}
+    </h2>
+  
+    <form [formGroup]="taskForm" class="task-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Título</mat-label>
+        <input
+          matInput
+          formControlName="title"
+          placeholder="Ingresa el título de la tarea"
+        />
+        @if (isFieldInvalid('title')) {
+        <mat-error>
+          {{ getErrorMessage("title") }}
+        </mat-error>
+        }
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Describe la tarea"
+          rows="4"
+        >
+        </textarea>
+        @if (isFieldInvalid('description')) {
+        <mat-error>
+          {{ getErrorMessage("description") }}
+        </mat-error>
+        }
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="estado">
+          <mat-option value="pendiente">Pendiente</mat-option>
+          <mat-option value="completado">Completado</mat-option>
+        </mat-select>
+        @if (isFieldInvalid('estado')) {
+        <mat-error>
+          {{ getErrorMessage("estado") }}
+        </mat-error>
+        }
+      </mat-form-field>
+      <button
+         class="action-button"
+         (click)="onSave()"
+       >
+         {{ isEditMode ? "Guardar Cambios" : "Crear Tarea" }}
+       </button>
+    </form>
+  </div>
+</section>
