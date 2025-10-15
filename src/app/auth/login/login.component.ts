@@ -47,7 +47,7 @@ export class LoginComponent {
   onLogin(): void {
     const { username, password } = this.loginForm.value;
     if (this.authService.login(username, password)) {
-      this.router.navigate(['/tasks']);
+      this.router.navigate(['/dashboard']);
     } else {
       this.errorMessage = 'Usuario o contraseña incorrectos';
     }
