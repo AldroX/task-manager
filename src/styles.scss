@@ -1,4 +1,99 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// styles.scss (global)
+
+.cdk-overlay-container {
+    z-index: 9999 !important;
+}
+
+.cdk-global-overlay-wrapper {
+    z-index: 9999 !important;
+}
+
+// Estilos base del snackbar
+.mat-mdc-snack-bar-container {
+    --mdc-snackbar-container-color: #323232;
+    --mat-snack-bar-button-color: #ffffff;
+
+    .mdc-snackbar__surface {
+        min-width: 344px !important;
+        max-width: 672px !important;
+    }
+}
+
+// Success
+.snackbar-success {
+    .mdc-snackbar__surface {
+        background-color: #4caf50 !important;
+    }
+
+    .mat-mdc-snack-bar-label {
+        color: white !important;
+    }
+
+    .mat-mdc-button {
+        color: white !important;
+        --mat-text-button-state-layer-color: white;
+        --mat-text-button-ripple-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+// Error
+.snackbar-error {
+    .mdc-snackbar__surface {
+        background-color: #f44336 !important;
+    }
+
+    .mat-mdc-snack-bar-label {
+        color: white !important;
+    }
+
+    .mat-mdc-button {
+        color: white !important;
+        --mat-text-button-state-layer-color: white;
+        --mat-text-button-ripple-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+// Warning
+.snackbar-warning {
+    .mdc-snackbar__surface {
+        background-color: #ff9800 !important;
+    }
+
+    .mat-mdc-snack-bar-label {
+        color: white !important;
+    }
+
+    .mat-mdc-button {
+        color: white !important;
+        --mat-text-button-state-layer-color: white;
+        --mat-text-button-ripple-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+// Info
+.snackbar-info {
+    .mdc-snackbar__surface {
+        background-color: #2196f3 !important;
+    }
+
+    .mat-mdc-snack-bar-label {
+        color: white !important;
+    }
+
+    .mat-mdc-button {
+        color: white !important;
+        --mat-text-button-state-layer-color: white;
+        --mat-text-button-ripple-color: rgba(255, 255, 255, 0.1);
+    }
+}
