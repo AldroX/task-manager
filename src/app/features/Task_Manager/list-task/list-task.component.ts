@@ -10,6 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-list-task',
@@ -22,6 +25,9 @@ import { RouterLink } from '@angular/router';
     MatTooltipModule,
     TaskCardComponent,
     RouterLink,
+    MatSelectModule,
+    MatInputModule,
+    FormsModule
   ],
   templateUrl: './list-task.component.html',
   styleUrl: './list-task.component.scss',
@@ -31,6 +37,9 @@ export class ListTaskComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
 
   tasks: Tareas[] = [];
+  filteredTasks: Tareas[] = [];
+  statusOptions = ['', 'pendiente', 'completado'];
+  estadoSeleccionado: 'pendiente' | 'completado' | '' = '';
 
   ngOnInit() {
     this.loadAllTask();
@@ -45,6 +54,7 @@ export class ListTaskComponent implements OnInit, OnDestroy {
       this.taskService.getTasks().subscribe({
         next: (tasks: Tareas[]) => {
           this.tasks = tasks; // Crear una nueva referencia del array
+          this.onFilterTasksByStatus(); // Aplicar el filtro después de cargar las tareas
         },
         error: (error: unknown) => {
           console.error('Error al cargar tareas:', error);
@@ -52,7 +62,7 @@ export class ListTaskComponent implements OnInit, OnDestroy {
       })
     );
   }
- //todo: Cambiar el mensaje de confirmacion por un modal de angular material
+  //todo: Cambiar el mensaje de confirmacion por un modal de angular material
   onDeleteTask(task: Tareas): void {
     this.subscription.add(
       this.taskService.deleteTask(task.id).subscribe({
@@ -62,6 +72,23 @@ export class ListTaskComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           console.error('Error al eliminar tarea:', error);
+        },
+      })
+    );
+  }
+
+  onFilterTasksByStatus(): void {
+    this.subscription.add(
+      this.taskService.getTasks().subscribe({
+        next: (tasks: Tareas[]) => {
+          if (this.estadoSeleccionado === '') {
+            this.tasks = tasks;
+          } else {
+            this.tasks = tasks.filter((task) => task.estado === this.estadoSeleccionado);
+          }
+        },
+        error: (error: unknown) => {
+          console.error('Error al filtrar tareas:', error);
         },
       })
     );
