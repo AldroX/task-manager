@@ -1,9 +1,22 @@
-<div class="list-task">
-@for(task of tasks; track task.id){
-  <app-task-card [task]="task"></app-task-card>
-}@empty{
-  <div class="no-tasks">
+<section class="list-section">
+  <div class="add-buttom">
+    <button
+      mat-mini-fab
+      color="primary"
+      matTooltip="Adicionar una tarea"
+      routerLink="/tasks/create"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="list-task">
+    @for(task of tasks; track task.id){
+    <app-task-card [task]="task"  (deleteTask)="onDeleteTask($event)"></app-task-card>
+    }@empty{
+    <div class="no-tasks">
       <p>No hay tareas</p>
-  </div>  
-}
-</div>
+    </div>
+    }
+  </div>
+</section>
+

@@ -12,3 +12,13 @@
   align-items: center;
   height: 100%;
 }
+
+.list-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.add-buttom{
+ padding: 10px;
+ margin-left: 80px;
+}
