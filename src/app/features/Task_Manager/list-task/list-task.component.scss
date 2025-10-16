@@ -3,7 +3,6 @@
   grid-template-columns: 300px 300px 300px 300px;
   grid-template-rows: 1fr;
   padding: 1rem;
-  margin-left: 50px;
 }
 .no-tasks {
   display: flex;
@@ -20,4 +19,36 @@
 .add-buttom{
  padding: 10px;
  margin-left: 80px;
+}
+.create-search{
+  margin-left:  20px;
+  margin-top: 15px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-search{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 1200px) {
+  .list-task {
+    grid-template-columns: 300px 300px;
+    grid-template-rows: auto auto;
+    gap: 30px;
+    margin-left: 20px;
+  }
+
+  @media (max-width: 650px) {
+    .list-task {
+      grid-template-columns: 300px;
+      grid-template-rows: auto auto auto auto;
+      gap: 30px;
+      margin-left: 20px;
+    }
+  }
 }

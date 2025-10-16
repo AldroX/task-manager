@@ -21,10 +21,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { Tareas } from '@core/models/Tareas.models';
 import { ModalComponent } from '@shared/modal/modal.component';
 import { routes } from 'app/app.routes';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from 'app/core/services/task.service';
-import { MatDialogActions, MatDialogContent } from "@angular/material/dialog";
-
+import { NotificationService } from 'app/core/services/notification.service';
 
 export interface TaskFormData {
   task?: Tareas;
@@ -55,6 +54,7 @@ export class CreateUpdateFormComponent implements OnInit {
   activateRoute = inject(ActivatedRoute);
   router = inject(Router);
   taskService = inject(TaskService);
+  notificationService = inject(NotificationService)
   id: string = '';
   taskData?: Tareas;
 
@@ -72,7 +72,7 @@ export class CreateUpdateFormComponent implements OnInit {
 
     if (this.id && this.isEditMode) {
       this.loadTaskById(this.id);
-    }else{
+    } else {
       this.initializeNewTask();
     }
   }
@@ -114,24 +114,25 @@ export class CreateUpdateFormComponent implements OnInit {
     }
 
     const formValues = this.taskForm.value;
-    if(this.isEditMode && this.taskData){
+    if (this.isEditMode && this.taskData) {
       this.editTask(formValues as Tareas);
-    }else{
+    } else {
       this.createTask(formValues as Tareas);
     }
   }
-  
+
   createTask(task: Tareas): void {
     const newTask: Omit<Tareas, 'id'> = {
       title: task.title,
       description: task.description,
       estado: task.estado,
-    }
+    };
 
     this.taskService.createTask(newTask).subscribe({
       next: (createdTask:Tareas | undefined) => {
         console.log('Tarea creada exitosamente:', createdTask);
         this.taskForm.reset();
+        this.notificationService.success('Tarea creada exitosamente');
         // Navegar a la lista o mostrar mensaje de éxito
         this.router.navigate(['/tasks']);
       },
@@ -142,8 +143,8 @@ export class CreateUpdateFormComponent implements OnInit {
   }
 
   editTask(task: Tareas): void {
-    if(!this.taskData?.id){
-      return
+    if (!this.taskData?.id) {
+      return;
     }
     const updatedTask: Partial<Tareas> = {
       title: task.title,
@@ -151,7 +152,7 @@ export class CreateUpdateFormComponent implements OnInit {
       estado: task.estado,
     };
 
-    this.taskService.updateTask(+this.id,updatedTask).subscribe({
+    this.taskService.updateTask(+this.id, updatedTask).subscribe({
       next: (updatedTask) => {
         console.log('Tarea actualizada exitosamente:', updatedTask);
         this.taskForm.reset();
@@ -161,8 +162,7 @@ export class CreateUpdateFormComponent implements OnInit {
       error: (error) => {
         console.error('Error al actualizar la tarea:', error);
       },
-    })
-
+    });
   }
 
   // Helper methods para validación en el template
@@ -187,5 +187,4 @@ export class CreateUpdateFormComponent implements OnInit {
     this.taskForm.reset();
     this.router.navigate(['/tasks']);
   }
-
 }
