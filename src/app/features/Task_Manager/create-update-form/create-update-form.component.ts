@@ -41,7 +41,10 @@ export interface TaskFormData {
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
-  ],
+    MatDialogActions,
+    MatDialogContent,
+    RouterLink
+],
   templateUrl: './create-update-form.component.html',
   styleUrl: './create-update-form.component.scss',
 })
@@ -126,7 +129,7 @@ export class CreateUpdateFormComponent implements OnInit {
     };
 
     this.taskService.createTask(newTask).subscribe({
-      next: (createdTask) => {
+      next: (createdTask:Tareas | undefined) => {
         console.log('Tarea creada exitosamente:', createdTask);
         this.taskForm.reset();
         this.notificationService.success('Tarea creada exitosamente');

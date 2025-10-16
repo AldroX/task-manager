@@ -1,11 +1,11 @@
-<section class="container">
-  <div class="form">
-    <h2 mat-dialog-title>
+<section class="task-container">
+  <div class="task-card">
+    <h2 mat-dialog-title class="form-title">
       {{ isEditMode ? "Editar Tarea" : "Crear Nueva Tarea" }}
     </h2>
-  
+
     <form [formGroup]="taskForm" class="task-form">
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="outline" class="form-field">
         <mat-label>Título</mat-label>
         <input
           matInput
@@ -13,46 +13,52 @@
           placeholder="Ingresa el título de la tarea"
         />
         @if (isFieldInvalid('title')) {
-        <mat-error>
-          {{ getErrorMessage("title") }}
-        </mat-error>
+          <mat-error>{{ getErrorMessage('title') }}</mat-error>
         }
       </mat-form-field>
-  
-      <mat-form-field appearance="outline" class="full-width">
+
+      <mat-form-field appearance="outline" class="form-field">
         <mat-label>Descripción</mat-label>
         <textarea
           matInput
           formControlName="description"
           placeholder="Describe la tarea"
           rows="4"
-        >
-        </textarea>
+        ></textarea>
         @if (isFieldInvalid('description')) {
-        <mat-error>
-          {{ getErrorMessage("description") }}
-        </mat-error>
+          <mat-error>{{ getErrorMessage('description') }}</mat-error>
         }
       </mat-form-field>
-  
-      <mat-form-field appearance="outline" class="full-width">
+
+      <mat-form-field appearance="outline" class="form-field">
         <mat-label>Estado</mat-label>
         <mat-select formControlName="estado">
           <mat-option value="pendiente">Pendiente</mat-option>
           <mat-option value="completado">Completado</mat-option>
         </mat-select>
         @if (isFieldInvalid('estado')) {
-        <mat-error>
-          {{ getErrorMessage("estado") }}
-        </mat-error>
+          <mat-error>{{ getErrorMessage('estado') }}</mat-error>
         }
       </mat-form-field>
-      <button
-         class="action-button"
-         (click)="onSave()"
-       >
-         {{ isEditMode ? "Guardar Cambios" : "Crear Tarea" }}
-       </button>
+
+      <div class="actions">
+          <button
+          [routerLink]="[ '/tasks' ]"
+          mat-flat-button
+          color="secondary"
+          class="action-button"
+        >
+          Cancelar
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          class="action-button"
+          (click)="onSave()"
+        >
+          {{ isEditMode ? "Guardar Cambios" : "Crear Tarea" }}
+        </button>
+      </div>
     </form>
   </div>
 </section>

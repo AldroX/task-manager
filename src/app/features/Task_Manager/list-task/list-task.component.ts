@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Tareas } from '@core/models/Tareas.models';
 import { TaskService } from 'app/core/services/task.service';
 import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
@@ -15,6 +15,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationService } from 'app/core/services/notification.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteModalComponent } from '@shared/delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-list-task',
@@ -40,6 +42,8 @@ export class ListTaskComponent implements OnInit, OnDestroy {
   notificationService = inject(NotificationService);
   test = inject(MatSnackBar)
   private subscription: Subscription = new Subscription();
+
+  constructor(private dialog: MatDialog, private cdr: ChangeDetectorRef) {}
 
   tasks: Tareas[] = [];
   filteredTasks: Tareas[] = [];
@@ -128,5 +132,29 @@ export class ListTaskComponent implements OnInit, OnDestroy {
   clearFilters(): void {
     this.searchControl.setValue('');
     this.estadoControl.setValue('');
+    this.taskService.deleteTask(task.id).subscribe({
+      next: () => {
+        console.log('Tarea eliminada exitosamente');
+        this.loadAllTask();
+        this.cdr.detectChanges();
+      },
+      error: (error) => {
+        console.error('Error al eliminar tarea:', error);
+      },
+    });
+  }
+  openConfirmDialog($event: Tareas): void {
+    const dialogRef = this.dialog.open(DeleteModalComponent, {
+      width: '400px',
+      data: {
+        title: 'Eliminar Tarea',
+        message: '¿Estás seguro de que quieres eliminar esta tarea?',
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.onDeleteTask($event);
+      }
+    });
   }
 }
