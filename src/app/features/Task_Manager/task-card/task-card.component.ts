@@ -34,12 +34,7 @@ export class TaskCardComponent {
     private dialogService: DialogService,
     private taskService: TaskService
   ) {}
-
-  onViewTask(): void {
-    // Implementar vista de detalles si es necesario
-    console.log('Ver tarea:', this.task);
-  }
-
+  
   onEditTask(): void {
     this.editTask.emit(this.task);
   }
