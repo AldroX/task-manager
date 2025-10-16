@@ -3,9 +3,9 @@
 }
 
 .layout-container {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: stretch; */
   min-height: 100vh;
   padding-top: 64px; /* Espacio para el header fijo */
   margin-left: 240px; /* Espacio para el sidebar fijo */
