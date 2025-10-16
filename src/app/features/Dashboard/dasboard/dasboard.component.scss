@@ -2,6 +2,7 @@
   padding: 2rem;
   max-width: 1400px;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 .dashboard-title {
@@ -10,24 +11,18 @@
   color: #333;
 }
 
-// .card-list{
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: center;
-// }
-
 .stats-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: 120px;
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
 
 .stat-card {
   background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 8px;
+  padding: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
@@ -41,19 +36,19 @@
 }
 
 .stat-card.total {
-  border-left: 4px solid #3b82f6;
+  border-left: 2px solid #3b82f6;
 }
 
 .stat-card.pending {
-  border-left: 4px solid #ff9f40;
+  border-left: 2px solid #ff9f40;
 }
 
 .stat-card.completed {
-  border-left: 4px solid #4bc0c0;
+  border-left: 2px solid #4bc0c0;
 }
 
 .stat-icon {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .stat-content h3 {
@@ -66,22 +61,22 @@
 .stat-number {
   margin: 0.5rem 0 0 0;
   font-size: 2.5rem;
-  font-weight: bold;
+  font-weight:2 bold;
   color: #333;
 }
 
 .charts-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
 }
 
 .chart-wrapper {
   background: white;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 400px;
+  height: 300px;
 }
 
 @media (max-width: 768px) {
@@ -90,6 +85,16 @@
   }
   
   .chart-wrapper {
-    height: 300px;
+    height: 150px;
   }
+}
+
+.svg-color{
+  color: #3b82f6;
+}
+.svg-bgcolor{
+  color: #ff9f40;
+}
+.svg{
+  color: #4bc0c0;
 }
