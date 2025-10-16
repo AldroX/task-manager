@@ -32,7 +32,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
   hidePassword = true;
-
+  isLoading = false;
   authService = inject(AuthService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
@@ -44,12 +44,21 @@ export class LoginComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
-  onLogin(): void {
+   onLogin(): void {
+    this.errorMessage = '';
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    this.isLoading = true;
     const { username, password } = this.loginForm.value;
+
     if (this.authService.login(username, password)) {
       this.router.navigate(['/dashboard']);
     } else {
-      this.errorMessage = 'Usuario o contraseña incorrectos';
+      this.errorMessage = 'Usuario o contraseña inválidos';
+      this.isLoading = false;
     }
   }
 

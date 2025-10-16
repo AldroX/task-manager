@@ -1,6 +1,13 @@
 <section class="login-container">
   <mat-card class="login-card">
     <h1 class="login-title">Iniciar Sesión</h1>
+    <!-- Mensaje de error general -->
+    @if (errorMessage) {
+    <div class="error-message">
+      <mat-icon>error</mat-icon>
+      <span>{{ errorMessage }}</span>
+    </div>
+    }
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
       <!-- Usuario -->
