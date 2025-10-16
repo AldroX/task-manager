@@ -4,17 +4,13 @@
     class="example-icon"
     aria-label="Example icon-button with menu icon"
   >
-    <mat-icon>favorite</mat-icon>
+    <mat-icon>featured_play_list</mat-icon>
   </button>
-  <span>My App</span>
+  <span>Task Manager</span>
 
   <span class="spacer"></span>
 
-  <button
-    mat-icon-button
-    [matMenuTriggerFor]="userMenu"
-    aria-label="User menu"
-  >
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #userMenu="matMenu">
