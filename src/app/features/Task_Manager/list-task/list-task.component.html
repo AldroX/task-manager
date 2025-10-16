@@ -30,12 +30,10 @@
           </button>
           }
         </mat-form-field>
-        <button mat-stroked-button (click)="clearFilters()" class="clear-btn">
-          Limpiar filtros
-        </button>
       </div>
     </header>
     <button
+      class="btn-add"
       mat-mini-fab
       color="primary"
       matTooltip="Adicionar una tarea"
@@ -45,12 +43,24 @@
     </button>
   </div>
   <div class="list-task">
-    @for(task of tasks; track task.id){
+    @for(task of filteredTasks; track task.id){
     <app-task-card [task]="task"  (deleteTask)="openConfirmDialog($event)"></app-task-card>
     }@empty{
-    <div class="no-tasks">
-      <p>No hay tareas</p>
-    </div>
+     <div class="no-tasks">
+        <mat-icon class="no-tasks-icon">inbox</mat-icon>
+        <p class="no-tasks-message">No hay tareas que mostrar</p>
+        @if (searchControl.value || estadoControl.value) {
+          <p class="no-tasks-hint">Intenta ajustar los filtros de búsqueda</p>
+          <button 
+            mat-stroked-button 
+            color="primary"
+            (click)="clearFilters()"
+          >
+            <mat-icon>clear_all</mat-icon>
+            Limpiar filtros
+          </button>
+        }
+      </div>
     }
   </div>
 </section>
