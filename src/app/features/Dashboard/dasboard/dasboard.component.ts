@@ -105,7 +105,7 @@ export class DasboardComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!ctx) return;
 
     this.pieChart = new Chart(ctx, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
         labels: ['Pendientes', 'Completadas'],
         datasets: [{
