@@ -3,10 +3,12 @@
 }
 
 .layout-container {
-  /* display: flex;
-  flex-direction: row;
-  align-items: stretch; */
   min-height: 100vh;
   padding-top: 64px; /* Espacio para el header fijo */
-  margin-left: 240px; /* Espacio para el sidebar fijo */
+  margin-left: 240px;
+  transition: margin-left 0.3s ease; /* Animación suave */
+}
+
+.layout-container.collapsed {
+  margin-left: 60px; /* O el ancho que tenga la sidebar colapsada */
 }
