@@ -1,0 +1,102 @@
+.dialog-container {
+  padding: 1rem;
+  text-align: center;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  animation: bounce 0.5s ease-in-out;
+}
+
+.warning-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  color: #ff9800;
+  filter: drop-shadow(0 4px 8px rgba(255, 152, 0, 0.3));
+}
+
+.dialog-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.dialog-content {
+  padding: 0 1rem 1.5rem 1rem;
+  max-width: 100%;
+}
+
+.dialog-message {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 1rem 0.5rem 1rem;
+  margin: 0;
+}
+
+.cancel-button {
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-2px);
+  }
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.confirm-button {
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 12px rgba(244, 67, 54, 0.4);
+    transform: translateY(-2px);
+  }
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// Estilos globales para el diálogo (opcional, agregar en styles.scss global)
+::ng-deep .delete-dialog-panel {
+  border-radius: 16px !important;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+}
