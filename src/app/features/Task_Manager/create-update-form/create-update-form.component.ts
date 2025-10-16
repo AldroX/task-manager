@@ -21,9 +21,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { Tareas } from '@core/models/Tareas.models';
 import { ModalComponent } from '@shared/modal/modal.component';
 import { routes } from 'app/app.routes';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TaskService } from 'app/core/services/task.service';
 import { NotificationService } from 'app/core/services/notification.service';
+import { MatDialogActions, MatDialogContent } from '@angular/material/dialog';
 
 export interface TaskFormData {
   task?: Tareas;
@@ -41,8 +42,6 @@ export interface TaskFormData {
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogActions,
-    MatDialogContent,
     RouterLink
 ],
   templateUrl: './create-update-form.component.html',
@@ -130,14 +129,14 @@ export class CreateUpdateFormComponent implements OnInit {
 
     this.taskService.createTask(newTask).subscribe({
       next: (createdTask:Tareas | undefined) => {
-        console.log('Tarea creada exitosamente:', createdTask);
         this.taskForm.reset();
         this.notificationService.success('Tarea creada exitosamente');
         // Navegar a la lista o mostrar mensaje de éxito
         this.router.navigate(['/tasks']);
       },
       error: (error) => {
-        console.error('Error al crear la tarea:', error);
+        console.error(error);
+        this.notificationService.error('Error al crear la tarea');
       },
     });
   }
@@ -158,9 +157,11 @@ export class CreateUpdateFormComponent implements OnInit {
         this.taskForm.reset();
         // Navegar a la lista o mostrar mensaje de éxito
         this.router.navigate(['/tasks']);
+        this.notificationService.success('Tarea actualizada exitosamente');
       },
       error: (error) => {
-        console.error('Error al actualizar la tarea:', error);
+        console.error( error);
+        this.notificationService.error('Error al actualizar la tarea');
       },
     });
   }
