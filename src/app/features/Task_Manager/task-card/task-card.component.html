@@ -7,7 +7,7 @@
         {{ task.estado }}
       </div>
     </div>
-
+     <!-- Todo: corregir el texto para que se adapte a su contenedor y no salga de la caja -->
     <!-- Descripción con separación del título -->
     <mat-card-content class="card-content">
       <p class="card-description">{{ task.description }}</p>
@@ -16,14 +16,6 @@
     <!-- Opciones en esquina inferior derecha -->
     <mat-card-actions class="card-actions">
       <div class="action-buttons">
-        <button
-          mat-mini-fab
-          color="accent"
-          class="action-button"
-          (click)="onViewTask()"
-        >
-          <mat-icon>visibility</mat-icon>
-        </button>
         <button
           mat-mini-fab
           color="primary"
