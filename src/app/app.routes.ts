@@ -22,8 +22,8 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadComponent: () =>
-          import('./feature-manager-task/dashboard.page').then(
-            (c) => c.DashboardPageComponent
+          import('./features/Dashboard/dasboard/dasboard.component').then(
+            (c) => c.DasboardComponent
           ),
       },
       {
