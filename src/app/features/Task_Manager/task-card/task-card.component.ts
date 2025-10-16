@@ -45,15 +45,6 @@ export class TaskCardComponent {
   }
 
   onDeleteTask(): void {
-    this.dialogService
-      .openConfirmDialog(
-        'Eliminar Tarea',
-        '¿Estás seguro de que quieres eliminar esta tarea?'
-      )
-      .subscribe((confirmed) => {
-        if (confirmed) {
-          this.deleteTask.emit(this.task);
-        }
-      });
-  }
+    this.deleteTask.emit(this.task);
+  } 
 }

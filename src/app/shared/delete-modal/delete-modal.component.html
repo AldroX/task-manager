@@ -1,0 +1,26 @@
+<div class="dialog-container">
+  <!-- Icono de advertencia -->
+  <div class="icon-container">
+    <mat-icon class="warning-icon">warning_amber</mat-icon>
+  </div>
+
+  <!-- Título -->
+  <h2 mat-dialog-title class="dialog-title">{{ data.title }}</h2>
+
+  <!-- Contenido -->
+  <mat-dialog-content class="dialog-content">
+    <p class="dialog-message">{{ data.message }}</p>
+  </mat-dialog-content>
+
+  <!-- Acciones -->
+  <mat-dialog-actions class="dialog-actions">
+    <button mat-stroked-button class="cancel-button" (click)="onCancel()">
+      <mat-icon>close</mat-icon>
+      Cancelar
+    </button>
+    <button  class="confirm-button" (click)="onConfirm()">
+      <mat-icon>delete</mat-icon>
+      Eliminar
+    </button>
+  </mat-dialog-actions>
+</div>
