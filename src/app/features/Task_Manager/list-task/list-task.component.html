@@ -11,7 +11,7 @@
   </div>
   <div class="list-task">
     @for(task of tasks; track task.id){
-    <app-task-card [task]="task"  (deleteTask)="onDeleteTask($event)"></app-task-card>
+    <app-task-card [task]="task"  (deleteTask)="openConfirmDialog($event)"></app-task-card>
     }@empty{
     <div class="no-tasks">
       <p>No hay tareas</p>
