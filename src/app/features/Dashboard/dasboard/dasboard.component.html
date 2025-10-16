@@ -3,34 +3,95 @@
 </div> -->
 <div class="dashboard-container">
   <h1 class="dashboard-title">Dashboard de Tareas</h1>
-<div class="card-list">
+  <div class="card-list">
     <!-- Cards de estadísticas -->
     <div class="stats-cards">
       <div class="stat-card total">
-        <div class="stat-icon">📋</div>
+        <div class="stat-icon">
+          <svg
+            class="svg-color"
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3.5 5.5l1.5 1.5l2.5 -2.5" />
+            <path d="M3.5 11.5l1.5 1.5l2.5 -2.5" />
+            <path d="M3.5 17.5l1.5 1.5l2.5 -2.5" />
+            <path d="M11 6l9 0" />
+            <path d="M11 12l9 0" />
+            <path d="M11 18l9 0" />
+          </svg>
+        </div>
         <div class="stat-content">
           <h3>Total de Tareas</h3>
           <p class="stat-number">{{ stats.total }}</p>
         </div>
       </div>
-  
+
       <div class="stat-card pending">
-        <div class="stat-icon">⏳</div>
+        <div class="stat-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="svg-bgcolor"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"
+            />
+            <path
+              d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"
+            />
+          </svg>
+        </div>
         <div class="stat-content">
           <h3>Pendientes</h3>
           <p class="stat-number">{{ stats.porEstado.pendiente }}</p>
         </div>
       </div>
-  
+
       <div class="stat-card completed">
-        <div class="stat-icon">✅</div>
+        <div class="stat-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="svg"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 11l3 3l8 -8" />
+            <path
+              d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"
+            />
+          </svg>
+        </div>
         <div class="stat-content">
           <h3>Completadas</h3>
           <p class="stat-number">{{ stats.porEstado.completado }}</p>
         </div>
       </div>
     </div>
-</div>
+  </div>
 
   <!-- Gráficos -->
   <div class="charts-container">
